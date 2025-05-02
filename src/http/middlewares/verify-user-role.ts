@@ -12,7 +12,7 @@ export function verifyUserRole ({ role: roleToVerify } : Role) {
   ) => {
     
     if (!request.user.sub) {
-      return reply.status(401).send({ ok: false, message: "Usuário não autenticado." });
+      return reply.status(403).send({ ok: false, message: "Não tem permissão para acessar este recurso." });
     }
 
     const allowedRoles = Array.isArray(roleToVerify) ? roleToVerify : [roleToVerify];
